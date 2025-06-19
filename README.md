@@ -1,46 +1,163 @@
-# Getting Started with Create React App
+# Posts Exercise
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive post feed application built with React, TypeScript, and Tailwind CSS that fetches data from the [DummyJSON Posts API](https://dummyjson.com/docs/posts). This project demonstrates modern React patterns, infinite scrolling, CRUD operations, and responsive design.
 
-## Available Scripts
+## 🎨 Design Reference
 
-In the project directory, you can run:
+This application was built to match the design specifications from the [Frontend Task – Posts Design](https://www.figma.com/design/ynXV5sipW3kKhCnoRBFtOu/front-end-task-posts?node-id=3-3&t=i7E1dQXd1kjWbFHt-0) Figma file.
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### ✅ Core Functionality
+- **Infinite Scrolling** - Seamlessly loads posts with pagination
+- **Add New Posts** - Modal dialog for creating posts with live preview
+- **Edit Posts** - Inline editing with modal form
+- **Search Posts** - Real-time search by title and body content
+- **Sort Posts** - Sort by title in ascending/descending order
+- **Responsive Design** - Optimized for desktop and mobile devices
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### ✅ User Experience
+- **Modern UI** - Clean, card-based layout with Tailwind CSS
+- **Loading States** - Visual feedback during API operations
+- **Error Handling** - Graceful error handling for failed requests
+- **Debounced Search** - Optimized search performance
+- **Duplicate Prevention** - Prevents duplicate posts in the feed
 
-### `npm test`
+### ✅ Technical Features
+- **TypeScript** - Full type safety throughout the application
+- **Context API** - Centralized state management
+- **Intersection Observer** - Efficient infinite scroll implementation
+- **Modular Components** - Reusable and maintainable code structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Technologies Used
 
-### `npm run build`
+- **React 18** - Functional components with hooks
+- **TypeScript** - Type safety and better developer experience
+- **Tailwind CSS** - Utility-first CSS framework
+- **DummyJSON API** - RESTful API for posts data
+- **Intersection Observer API** - Infinite scroll implementation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📁 Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+src/
+├── components/
+│   ├── add-post/          # Add post modal component
+│   ├── edit-post/         # Edit post modal component
+│   ├── form-post/         # Shared form component
+│   ├── posts-list/        # Posts list and container
+│   ├── search-post/       # Search functionality
+│   └── resources/         # API functions
+├── hooks/
+│   └── PostsContext.tsx   # Global state management
+├── App.tsx               # Main application component
+└── index.tsx            # Application entry point
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Getting Started
 
-### `npm run eject`
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn package manager
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mohamedaldahoul/posts-exercise.git
+   cd posts-exercise
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-## Learn More
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📖 Available Scripts
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App (one-way operation)
+
+## 🎯 Key Components
+
+### PostsList
+The main component that displays the posts feed with infinite scrolling, search, and sorting functionality.
+
+### FormPost
+A reusable form component used for both adding and editing posts, featuring:
+- Title and body input fields
+- Tag management
+- Form validation
+- Loading states
+
+### SearchPost
+Real-time search component with debounced API calls to prevent excessive requests.
+
+### AddPost & EditPost
+Modal components that utilize the shared FormPost component for consistent user experience.
+
+## 🔧 API Integration
+
+The application integrates with the DummyJSON Posts API:
+
+- **GET** `/posts` - Fetch posts with pagination
+- **POST** `/posts/add` - Create new post
+- **PUT** `/posts/:id` - Update existing post
+- **GET** `/posts/search` - Search posts by query
+- **GET** `/posts` with sort parameters - Sort posts
+
+## 🎨 Design Features
+
+- **Card Layout** - Clean, modern post cards with shadows
+- **Responsive Grid** - Adapts to different screen sizes
+- **Modal Dialogs** - Smooth overlay interactions
+- **Loading Indicators** - Visual feedback for async operations
+- **Hover Effects** - Interactive elements with smooth transitions
+
+## 🔍 Search & Filtering
+
+- **Real-time Search** - Instant results as you type
+- **Debounced API Calls** - Optimized performance
+- **Sort Options** - Sort by title (ascending/descending)
+- **Search Disabled During Sort** - Prevents conflicts
+
+## 📱 Responsive Design
+
+The application is fully responsive and optimized for:
+- **Desktop** - Multi-column layout with full features
+- **Tablet** - Adaptive grid system
+- **Mobile** - Single column layout with touch-friendly interactions
+
+
+## 🚀 Deployment
+
+Build the production version:
+```bash
+npm run build
+```
+
+The build folder contains the optimized production files ready for deployment.
+
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 👨‍💻 Author
+
+**Mohamed Aldahoul**
+- GitHub: [@mohamedaldahoul](https://github.com/mohamedaldahoul)
+
+---
+
+Built with ❤️ using React, TypeScript, and Tailwind CSS
