@@ -74,15 +74,12 @@ const PostsListContainer: FC = () => {
         if (searchTimeout.current) clearTimeout(searchTimeout.current);
         searchTimeout.current = setTimeout(() => {
           fetchSearchPosts(search);
-        }, 100);
-      } // eslint-disable-next-line
-    }, [search]);
-
-    useEffect(() => {
+        }, 500); 
+      } 
       if (!search && sortOrder) {
         fetchPosts(true);
-      } // eslint-disable-next-line
-    }, [sortOrder, search]);
+       } // eslint-disable-next-line
+    }, [search, sortOrder]);
 
     useEffect(() => {
       const observer = new IntersectionObserver(onIntersection);
@@ -95,6 +92,7 @@ const PostsListContainer: FC = () => {
         }
       }
     }, [posts, onIntersection]);
+
     return (
       <div className="flex flex-col items-center w-full min-h-screen bg-gray-100 p-4">
         <div className="w-full max-w-md mb-2">
