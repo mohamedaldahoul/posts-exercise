@@ -6,8 +6,8 @@ type Props = {
   searching: boolean;
 };
 
-const SearchPost: FC<Props> = ({ search, setSearch, searching }) => {
-  return (
+const SearchPost: FC<Props> = ({ search, setSearch, searching }) =>
+  (
     <div className="w-full max-w-md mx-auto">
       <input
         type="text"
@@ -19,6 +19,5 @@ const SearchPost: FC<Props> = ({ search, setSearch, searching }) => {
       {searching && <div className="text-center text-gray-400 py-4">Searching...</div>}
     </div>
   );
-};
 
 export default SearchPost;

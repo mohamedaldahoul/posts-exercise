@@ -21,23 +21,23 @@ const PostsListContainer: FC = () => {
       if (isLoading) return;
       setIsLoading(true);
       try {
-        const data = await fetchPostsURL(
+        const { posts } = await fetchPostsURL(
           skip, 
           sortOrder ? 'title' : undefined, 
           sortOrder
         );
-        if (!data.posts || data.posts.length === 0) {
+        if (!posts || posts.length === 0) {
           setHasMore(false);
           return;
         }
         if (isReset) {
-          setPosts(data.posts);
+          setPosts(posts);
           setSkip(1);
         } else {
-          setPosts(prev => [...prev, ...data.posts]);
+          setPosts(prev => [...prev, ...posts]);
           setSkip(prev => prev + 1);
         }
-        setHasMore(data.posts.length === 20);
+        setHasMore(posts.length === 20);
       } catch (error) {
         console.error('Error loading posts:', error);
         setHasMore(false);
