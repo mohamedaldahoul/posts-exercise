@@ -18,7 +18,7 @@ type Props = {
 const EditPost: FC<Props> = ({ post, onClose, open }) => {
   const { setPosts } = usePosts();
   const [form, setForm] = useState({ title: post?.title || '', body: post?.body || '', tags: post?.tags.join(', ') || '' });
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const EditPost: FC<Props> = ({ post, onClose, open }) => {
 
   const handleSave = async (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
     setError(null);
     try {
       const response = await updatePostURL(
@@ -49,12 +49,11 @@ const EditPost: FC<Props> = ({ post, onClose, open }) => {
       if (!response.ok) throw new Error('Failed to update post');
       const updatedPost = await response.json();
       setPosts(prevPosts => prevPosts.map(p => p.id === updatedPost.id ? { ...p, ...updatedPost } : p));
-      setLoading(false);
+      setIsLoading(false);
       onClose();
     } catch (err) {
-      setLoading(false);
+      setIsLoading(false);
       setError(err instanceof Error ? err.message : 'Failed to update post');
-      console.error(err);
     }
   };
 
@@ -63,7 +62,7 @@ const EditPost: FC<Props> = ({ post, onClose, open }) => {
       formData={form}
       setFormData={setForm}
       onSubmit={handleSave}
-      loading={loading}
+      loading={isLoading}
       error={error}
       submitLabel="Save Changes"
       onClose={onClose}

@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent, FormEvent, ReactNode } from 'react';
+import { FC, ChangeEvent, FormEvent, ReactNode } from 'react';
 
 type FormData = {
   title: string;

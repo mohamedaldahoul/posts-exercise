@@ -1,4 +1,4 @@
-import React, { FC, createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
+import { FC, createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
 export type Post = {
    id?: number;

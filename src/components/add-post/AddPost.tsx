@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react'
+import {FC, useState} from 'react'
 import { usePosts, Post } from '../../hooks/PostsContext'
 import { FormPost } from '../form-post'
 import { savePostURL } from '../resources'
@@ -7,12 +7,12 @@ const AddPost: FC = () => {
   const { setPosts } = usePosts();
   const [formData, setFormData] = useState<{ title: string; body: string; tags: string }>({ title: '', body: '', tags: '' });
   const [error, setError] = useState<string | null>(null);
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAddPost = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
     setError(null);
     try {
       const response = await savePostURL(
@@ -26,31 +26,31 @@ const AddPost: FC = () => {
       const newPost: Post = await response.json();
       setPosts(prev => [newPost, ...prev]);
       setFormData({ title: '', body: '', tags: '' });
-      setOpen(false);
+      setIsOpen(false);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to add post');
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="flex items-center gap-2">
       <button
-        className="text-blue-600 hover:underline text-sm font-medium"
-        onClick={() => setOpen(true)}
+        className="text-[#3679FF] hover:underline text-sm font-medium"
+        onClick={() => setIsOpen(true)}
       >
         ＋Add post
       </button>
-      {open && (
+      {isOpen && (
         <FormPost
           formData={formData}
           setFormData={setFormData}
           onSubmit={handleAddPost}
-          loading={loading}
+          loading={isLoading}
           error={error}
           submitLabel="Add Post"
-          onClose={() => setOpen(false)}
+          onClose={() => setIsOpen(false)}
           title="Add Post"
         />
       )}
