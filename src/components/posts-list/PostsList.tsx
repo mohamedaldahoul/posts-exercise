@@ -13,11 +13,15 @@ const PostsList: FC<Props> = ({ posts, hasMore, elementRef }) => {
   const [editOpen, setEditOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState<Post & { id: number } | null>(null);
 
+  const capitalizeFirstLetter = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   return (
     <div className="flex flex-col items-center w-full min-h-screen bg-gray-100 md:px-4 pb-0">
       <EditPost post={selectedPost} open={editOpen} onClose={() => setEditOpen(false)} />
       <div className="w-full max-w-md">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mt-2">
           <h1 className="text-xl font-semibold text-gray-800">Posts</h1>
           <AddPost />
         </div>
@@ -26,7 +30,7 @@ const PostsList: FC<Props> = ({ posts, hasMore, elementRef }) => {
             post.id !== undefined && (
               <div key={post.id} className="relative bg-white rounded-lg shadow p-4 flex flex-col gap-1">
                 <button
-                  className="absolute top-3 right-2 rounded border border-gray-300 bg-white hover:bg-gray-100 transition" 
+                  className="absolute top-2 right-2 rounded border border-gray-300 bg-white hover:bg-gray-100 transition" 
                   aria-label="Edit post" 
                   onClick={() => { 
                     setSelectedPost(post as Post & { id: number }); 
@@ -41,7 +45,7 @@ const PostsList: FC<Props> = ({ posts, hasMore, elementRef }) => {
                 <p className="text-gray-600 text-sm line-clamp-2 text-left">{post.body}</p>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {post.tags && post.tags.map((tag: string) => (
-                    <span key={tag} className="bg-gray-100 text-xs text-gray-500 px-2 py-0.5 rounded">{tag}</span>
+                    <span key={tag} className="bg-gray-100 text-xs text-gray-500 px-2 py-0.5 rounded">{capitalizeFirstLetter(tag)}</span>
                   ))}
                 </div>
                 <div className="flex items-center gap-4 mt-2 pl-1 text-xs text-gray-400">

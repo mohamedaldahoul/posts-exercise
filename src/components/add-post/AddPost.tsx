@@ -35,9 +35,9 @@ const AddPost: FC = () => {
   };
 
   return (
-    <div className="flex items-center gap-2 pt-4">
+    <div className="flex items-center gap-2">
       <button
-        className="text-blue-600 hover:underline text-sm font-medium float-right mb-4"
+        className="text-blue-600 hover:underline text-sm font-medium"
         onClick={() => setOpen(true)}
       >
         ＋Add post
