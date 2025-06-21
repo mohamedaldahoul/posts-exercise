@@ -21,7 +21,6 @@ This application was built to match the design specifications from the [Frontend
 - **Loading States** - Visual feedback during API operations
 - **Error Handling** - Graceful error handling for failed requests
 - **Debounced Search** - Optimized search performance
-- **Duplicate Prevention** - Prevents duplicate posts in the feed
 
 ### ✅ Technical Features
 - **TypeScript** - Full type safety throughout the application
@@ -72,10 +71,19 @@ src/
    ```bash
    npm install
    ```
+      OR
+   ```bash 
+   yarn install
+   ```
+
 
 3. **Start the development server**
    ```bash
    npm start
+   ```
+      OR
+   ```bash 
+   yarn install
    ```
 
 4. **Open your browser**
@@ -144,6 +152,10 @@ The application is fully responsive and optimized for:
 Build the production version:
 ```bash
 npm run build
+```
+OR
+```bash
+yarn run build
 ```
 
 The build folder contains the optimized production files ready for deployment.
